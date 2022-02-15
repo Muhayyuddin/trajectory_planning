@@ -1,0 +1,211 @@
+\hypertarget{polynomial_8cpp_source}{}\doxysection{polynomial.\+cpp}
+\label{polynomial_8cpp_source}\index{src/polynomial.cpp@{src/polynomial.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00001}00001 \textcolor{comment}{/*************************************************************************\(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00002}00002 \textcolor{comment}{   Copyright 2022: Muhayy Ud Din.}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00003}00003 \textcolor{comment}{    All Rights Reserved.}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00004}00004 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00005}00005 \textcolor{comment}{    This program is free software; you can redistribute it and/or modify}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00006}00006 \textcolor{comment}{    it under the terms of the GNU General Public License as published by}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00007}00007 \textcolor{comment}{    the Free Software Foundation; either version 2 of the License, or}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00008}00008 \textcolor{comment}{    (at your option) any later version.}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00009}00009 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00010}00010 \textcolor{comment}{    This program is distributed in the hope that it will be useful,}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00011}00011 \textcolor{comment}{    but WITHOUT ANY WARRANTY; without even the implied warranty of}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00012}00012 \textcolor{comment}{    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00013}00013 \textcolor{comment}{    GNU General Public License for more details.}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00014}00014 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00015}00015 \textcolor{comment}{    You should have received a copy of the GNU General Public License}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00016}00016 \textcolor{comment}{    along with this program; if not, write to the}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00017}00017 \textcolor{comment}{    Free Software Foundation, Inc.,}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00018}00018 \textcolor{comment}{    59 Temple Place -\/ Suite 330, Boston, MA  02111-\/1307, USA.}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00019}00019 \textcolor{comment}{ \(\backslash\)*************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00020}00020 \textcolor{comment}{/* Author: Muhayy Ud Din */}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00021}00021 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00022}00022 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00023}00023 \textcolor{preprocessor}{\#include <cmath>}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00024}00024 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00025}00025 \textcolor{preprocessor}{\#include <eigen3/Eigen/Dense>}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00026}00026 \textcolor{preprocessor}{\#include "{}polynomial.h"{}}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00027}00027 \textcolor{preprocessor}{\#define \_USE\_MATH\_DEFINES }\textcolor{comment}{// for sin/log}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00028}00028 \textcolor{preprocessor}{\#define DEBUG1}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00029}00029 \textcolor{comment}{//\#define DEBUG2}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00031}00031 \textcolor{keyword}{using} Eigen::MatrixXd;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00032}00032 \textcolor{keyword}{using} Eigen::VectorXd;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00043}\mbox{\hyperlink{classPolynomial_a48820ddd31ba1b3b3acd8c6884f0f86c}{00043}} std::vector<double> \mbox{\hyperlink{classPolynomial_a48820ddd31ba1b3b3acd8c6884f0f86c}{Polynomial::TimeInterval}}(\textcolor{keywordtype}{double} start\_in, \textcolor{keywordtype}{double} end\_in, \textcolor{keywordtype}{int} n)}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00044}00044 \{}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00046}00046     std::vector<double> linspaced;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00048}00048     \textcolor{keywordtype}{double} start = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(start\_in);}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00049}00049     \textcolor{keywordtype}{double} end = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(end\_in);}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00050}00050     \textcolor{keywordtype}{double} num = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(n);}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00052}00052     \textcolor{keywordflow}{if} (num == 0)}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00053}00053     \{}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00054}00054         \textcolor{keywordflow}{return} linspaced;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00055}00055     \}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00056}00056     \textcolor{keywordflow}{if} (num == 1)}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00057}00057     \{}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00058}00058         linspaced.push\_back(start);}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00059}00059         \textcolor{keywordflow}{return} linspaced;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00060}00060     \}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00062}00062     \textcolor{keywordtype}{double} delta = (end -\/ start) / (num -\/ 1);}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00063}00063 }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00064}00064     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < num -\/ 1; ++i)}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00065}00065     \{}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00066}00066         linspaced.push\_back(start + delta * i);}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00067}00067     \}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00068}00068     linspaced.push\_back(end);}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00069}00069     \textcolor{keywordflow}{return} linspaced;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00070}00070 \}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00083}\mbox{\hyperlink{classPolynomial_a86c386ba90db817d897cba6b19f68770}{00083}} std::vector<double> \mbox{\hyperlink{classPolynomial_a86c386ba90db817d897cba6b19f68770}{Polynomial::GenerateQuanticPolynomial}}(std::vector<double> init\_values, std::vector<double> final\_values, \textcolor{keywordtype}{double} ti, \textcolor{keywordtype}{double} tf)}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00084}00084 \{}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00085}00085 \textcolor{preprocessor}{\#ifdef DEBUG2}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00086}00086     std::cout << \textcolor{stringliteral}{"{}Generating Matrix A: "{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00087}00087 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00088}00088     \textcolor{comment}{// matrix representing equations.}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00089}00089     MatrixXd A = MatrixXd(6, 6);}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00090}00090     A << 1,   ti,  ti*ti,   ti*ti*ti, ti*ti*ti*ti,  ti*ti*ti*ti*ti,}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00091}00091          0,   1,   2*ti,    3*ti*ti,  4*ti*ti*ti,   5*ti*ti*ti*ti,}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00092}00092          0,   0,   2,       6*ti,     12*ti*ti,     20*ti*ti*ti,}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00093}00093          1,   tf,  tf*tf,   tf*tf*tf, tf*tf*tf*tf,  tf*tf*tf*tf*tf,}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00094}00094          0,   1,   2*tf,    3*tf*tf,  4*tf*tf*tf,   5*tf*tf*tf*tf,}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00095}00095          0,   0,   2,       6*tf,     12*tf*tf,     20*tf*tf*tf;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00097}00097 \textcolor{comment}{// A<< 1, 0, 0, 0, 0, 0,}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00098}00098 \textcolor{comment}{//     0, 1, 0, 0, 0, 0,}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00099}00099 \textcolor{comment}{//     0, 0, 1, 0, 0, 0,}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00100}00100 \textcolor{comment}{//     0, 0, 0, 1, 0, 0,}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00101}00101 \textcolor{comment}{//     0, 0, 0, 0, 1, 0,}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00102}00102 \textcolor{comment}{//     0, 0, 0, 0, 0, 1;}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00103}00103 \textcolor{preprocessor}{\#ifdef DEBUG1}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00104}00104     std::cout << \textcolor{stringliteral}{"{}The matrix A is: "{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00105}00105     std::cout << A << std::endl;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00106}00106 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00107}00107 \textcolor{preprocessor}{\#ifdef DEBUG2}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00108}00108     std::cout << \textcolor{stringliteral}{"{}Generating Matrix B: "{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00109}00109 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00110}00110     MatrixXd B = MatrixXd(6, 1);}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00111}00111     B << init\_values[0], \textcolor{comment}{// initial position}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00112}00112         init\_values[1],  \textcolor{comment}{// initial velocity}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00113}00113         init\_values[2],  \textcolor{comment}{// initial acceleration}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00114}00114         final\_values[0], \textcolor{comment}{// final position}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00115}00115         final\_values[1], \textcolor{comment}{// final velocity}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00116}00116         final\_values[2]; \textcolor{comment}{// final acceleration}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00117}00117 }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00118}00118 \textcolor{preprocessor}{\#ifdef DEBUG1}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00119}00119     std::cout << \textcolor{stringliteral}{"{}The matrix B is: "{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00120}00120     std::cout << B << std::endl;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00121}00121 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00122}00122 \textcolor{preprocessor}{\#ifdef DEBUG2}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00123}00123     std::cout << \textcolor{stringliteral}{"{}Computing Inverse of A: "{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00124}00124 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00125}00125 }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00126}00126     MatrixXd Ai = A.inverse();}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00127}00127 }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00128}00128 \textcolor{preprocessor}{\#ifdef DEBUG1}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00129}00129     std::cout << \textcolor{stringliteral}{"{}The Inverse of matrix A is: "{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00130}00130     std::cout << Ai << std::endl;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00131}00131 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00132}00132 \textcolor{preprocessor}{\#ifdef DEBUG2}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00133}00133     std::cout << \textcolor{stringliteral}{"{}Computing Coefficients using C = A\string^-\/1 * B : "{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00134}00134 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00135}00135 }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00136}00136     MatrixXd C = Ai * B;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00137}00137 }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00138}00138 \textcolor{preprocessor}{\#ifdef DEBUG1}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00139}00139     std::cout << \textcolor{stringliteral}{"{}The computed Coefficients are:  "{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00140}00140     std::cout << C << std::endl;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00141}00141 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00142}00142 }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00143}00143     std::vector<double> result;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00144}00144     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < C.size(); i++)}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00145}00145     \{}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00146}00146         result.push\_back(C.data()[i]);}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00147}00147     \}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00148}00148 }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00149}00149     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00150}00150 \}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00160}\mbox{\hyperlink{classPolynomial_add034a4120e19db2dd7665df0dac0da5}{00160}} std::vector<double> \mbox{\hyperlink{classPolynomial_add034a4120e19db2dd7665df0dac0da5}{Polynomial::PolynomialPointsFromCoefficients}}(std::vector<double> coefficients, \textcolor{keywordtype}{double} from\_t, \textcolor{keywordtype}{double} to\_t, \textcolor{keywordtype}{int} n)}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00161}00161 \{}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00162}00162 }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00163}00163 \textcolor{preprocessor}{\#ifdef DEBUG2}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00164}00164     std::cout << \textcolor{stringliteral}{"{}Computing [ "{}} << n << \textcolor{stringliteral}{"{} ] Uniform points between [ "{}} << from\_t << \textcolor{stringliteral}{"{} , "{}} << to\_t << \textcolor{stringliteral}{"{} ]"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00165}00165 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00166}00166     std::vector<double> ts = \mbox{\hyperlink{classPolynomial_a48820ddd31ba1b3b3acd8c6884f0f86c}{TimeInterval}}(from\_t, to\_t, n);}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00167}00167     std::vector<double> polynomial;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00168}00168     polynomial.resize(n);}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00169}00169     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&p : polynomial)}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00170}00170     \{}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00171}00171         p = 0;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00172}00172     \}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00173}00173 \textcolor{preprocessor}{\#ifdef DEBUG1}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00174}00174     std::cout << \textcolor{stringliteral}{"{} Point Intervals:  "{}} << polynomial.size() << std::endl;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00175}00175     std::cout << \textcolor{stringliteral}{"{} [ "{}};}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00176}00176     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&t : ts)}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00177}00177     \{}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00178}00178         std::cout << t << \textcolor{stringliteral}{"{} , "{}};}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00179}00179     \}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00180}00180     std::cout << \textcolor{stringliteral}{"{} ] "{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00181}00181 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00182}00182 \textcolor{preprocessor}{\#ifdef DEBUG2}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00183}00183     std::cout << \textcolor{stringliteral}{"{}Computing polynomials: "{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00184}00184 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00185}00185     \textcolor{keywordtype}{int} power\{0\};}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00186}00186     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} t\{0\}; t < ts.size(); ++t)}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00187}00187     \{}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00188}00188         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&coefficient : coefficients)}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00189}00189         \{}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00190}00190             polynomial[t] = polynomial[t] + (coefficient * std::pow(ts[t], power));}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00191}00191             ++power;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00192}00192         \}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00193}00193         power = 0;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00194}00194     \}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00195}00195 \textcolor{preprocessor}{\#ifdef DEBUG2}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00196}00196     std::cout << \textcolor{stringliteral}{"{}Computed polynomials."{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00197}00197 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00198}00198 \textcolor{preprocessor}{\#ifdef DEBUG1}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00199}00199     std::cout << \textcolor{stringliteral}{"{} Polynomial vector size is :  "{}} << polynomial.size() << std::endl;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00200}00200     std::cout << \textcolor{stringliteral}{"{} [ "{}};}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00201}00201     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&p : polynomial)}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00202}00202     \{}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00203}00203         std::cout << p << \textcolor{stringliteral}{"{} , "{}};}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00204}00204     \}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00205}00205     std::cout << \textcolor{stringliteral}{"{} ] "{}} << std::endl}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00206}00206               << std::endl;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00207}00207 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00208}00208 }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00209}00209     \textcolor{keywordflow}{return} polynomial;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00210}00210 \}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00211}00211 }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00219}\mbox{\hyperlink{classPolynomial_a55b39e470f9a17d304f5cb0c5a511653}{00219}} std::vector<double> \mbox{\hyperlink{classPolynomial_a55b39e470f9a17d304f5cb0c5a511653}{Polynomial::ComputeVelocity}}(std::vector<double> coefficient, std::vector<double> time)}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00220}00220 \{}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00221}00221     std::vector<double> velocity;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00222}00222     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} t\{0\}; t < time.size(); ++t)}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00223}00223     \{}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00224}00224         velocity.push\_back(coefficient[1] + 2 * coefficient[2] * time[t] + }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00225}00225                                             3 * coefficient[3] * std::pow(time[t], 2.0) + }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00226}00226                                             4 * coefficient[4] * std::pow(time[t], 3.0)+ }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00227}00227                                             5 * coefficient[5] * std::pow(time[t], 4.0));}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00228}00228     \}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00229}00229     \textcolor{keywordflow}{return} velocity;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00230}00230 \}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00231}00231 }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00239}\mbox{\hyperlink{classPolynomial_a67b2cb8a02b3fde10fae20217cbc9c15}{00239}} std::vector<double> \mbox{\hyperlink{classPolynomial_a67b2cb8a02b3fde10fae20217cbc9c15}{Polynomial::ComputeAcceleration}}(std::vector<double> coefficient, std::vector<double> time)}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00240}00240 \{}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00241}00241     std::vector<double> acceleration;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00242}00242     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} t\{0\}; t < time.size(); ++t)}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00243}00243     \{}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00244}00244         acceleration.push\_back(2 * coefficient[2] + 6 * coefficient[3] * time[t] + }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00245}00245                                12 * coefficient[4] * std::pow(time[t], 2.0) + }
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00246}00246                                20 * coefficient[5] * std::pow(time[t], 3.0));}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00247}00247     \}}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00248}00248     \textcolor{keywordflow}{return} acceleration;}
+\DoxyCodeLine{\Hypertarget{polynomial_8cpp_source_l00249}00249 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,50 @@
+\hypertarget{polynomial_8h_source}{}\doxysection{polynomial.\+h}
+\label{polynomial_8h_source}\index{include/polynomial.h@{include/polynomial.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00001}00001 \textcolor{comment}{/*************************************************************************\(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00002}00002 \textcolor{comment}{   Copyright 2022: Muhayy Ud Din.}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00003}00003 \textcolor{comment}{    All Rights Reserved.}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00004}00004 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00005}00005 \textcolor{comment}{    This program is free software; you can redistribute it and/or modify}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00006}00006 \textcolor{comment}{    it under the terms of the GNU General Public License as published by}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00007}00007 \textcolor{comment}{    the Free Software Foundation; either version 2 of the License, or}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00008}00008 \textcolor{comment}{    (at your option) any later version.}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00009}00009 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00010}00010 \textcolor{comment}{    This program is distributed in the hope that it will be useful,}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00011}00011 \textcolor{comment}{    but WITHOUT ANY WARRANTY; without even the implied warranty of}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00012}00012 \textcolor{comment}{    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00013}00013 \textcolor{comment}{    GNU General Public License for more details.}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00014}00014 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00015}00015 \textcolor{comment}{    You should have received a copy of the GNU General Public License}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00016}00016 \textcolor{comment}{    along with this program; if not, write to the}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00017}00017 \textcolor{comment}{    Free Software Foundation, Inc.,}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00018}00018 \textcolor{comment}{    59 Temple Place -\/ Suite 330, Boston, MA  02111-\/1307, USA.}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00019}00019 \textcolor{comment}{ \(\backslash\)*************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00020}00020 \textcolor{comment}{/* Author: Muhayy Ud Din */}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00021}00021 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00022}00022 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00023}00023 \textcolor{preprocessor}{\#include <cmath>}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00024}00024 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00025}00025 \textcolor{preprocessor}{\#include <eigen3/Eigen/Dense>}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00026}00026 \textcolor{preprocessor}{\#define \_USE\_MATH\_DEFINES }\textcolor{comment}{// for sin/log}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00027}00027 \textcolor{comment}{//\#define DEBUG1}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00028}00028 \textcolor{comment}{//\#define DEBUG2}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00030}00030 \textcolor{keyword}{using} Eigen::MatrixXd;}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00031}00031 \textcolor{keyword}{using} Eigen::VectorXd;}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00032}\mbox{\hyperlink{classPolynomial}{00032}} \textcolor{keyword}{class }\mbox{\hyperlink{classPolynomial}{Polynomial}}}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00033}00033 \{}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00035}00035 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00045}00045    std::vector<double> \mbox{\hyperlink{classPolynomial_a48820ddd31ba1b3b3acd8c6884f0f86c}{TimeInterval}}(\textcolor{keywordtype}{double} start\_in, \textcolor{keywordtype}{double} end\_in, \textcolor{keywordtype}{int} n);}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00059}00059    std::vector<double> \mbox{\hyperlink{classPolynomial_a86c386ba90db817d897cba6b19f68770}{GenerateQuanticPolynomial}}(std::vector<double> init\_values, std::vector<double> final\_values, \textcolor{keywordtype}{double} ti, \textcolor{keywordtype}{double} tf);}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00070}00070    std::vector<double> \mbox{\hyperlink{classPolynomial_add034a4120e19db2dd7665df0dac0da5}{PolynomialPointsFromCoefficients}}(std::vector<double> coefficients, \textcolor{keywordtype}{double} from\_t, \textcolor{keywordtype}{double} to\_t, \textcolor{keywordtype}{int} n);}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00079}00079    std::vector<double> \mbox{\hyperlink{classPolynomial_a55b39e470f9a17d304f5cb0c5a511653}{ComputeVelocity}}(std::vector<double> coefficient, std::vector<double> time);}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00087}00087    std::vector<double> \mbox{\hyperlink{classPolynomial_a67b2cb8a02b3fde10fae20217cbc9c15}{ComputeAcceleration}}(std::vector<double> coefficient, std::vector<double> time);}
+\DoxyCodeLine{\Hypertarget{polynomial_8h_source_l00088}00088 \};}
+
+\end{DoxyCode}

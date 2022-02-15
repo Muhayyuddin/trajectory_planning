@@ -1,0 +1,361 @@
+\hypertarget{classPolynomial}{}\doxysection{Polynomial Class Reference}
+\label{classPolynomial}\index{Polynomial@{Polynomial}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classPolynomial_a48820ddd31ba1b3b3acd8c6884f0f86c}{Time\+Interval}} (double start\+\_\+in, double end\+\_\+in, int n)
+\begin{DoxyCompactList}\small\item\em It compute the n uniform numbers between start and end number. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classPolynomial_a86c386ba90db817d897cba6b19f68770}{Generate\+Quantic\+Polynomial}} (std\+::vector$<$ double $>$ init\+\_\+values, std\+::vector$<$ double $>$ final\+\_\+values, double ti, double tf)
+\begin{DoxyCompactList}\small\item\em This function will generat the system of linear equation for Quantic polynomial (of order 5) i.\+e. s(t) = a\+\_\+0 + a\+\_\+1 $\ast$ t + a\+\_\+2 $\ast$ t$\ast$$\ast$2 + a\+\_\+3 $\ast$ t$\ast$$\ast$3 + a\+\_\+4 $\ast$ t$\ast$$\ast$4 + a\+\_\+5 $\ast$ t$\ast$$\ast$5. Compute the coefficient using A$^\wedge$-\/1 $\ast$ B = C. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classPolynomial_add034a4120e19db2dd7665df0dac0da5}{Polynomial\+Points\+From\+Coefficients}} (std\+::vector$<$ double $>$ coefficients, double from\+\_\+t, double to\+\_\+t, int n)
+\begin{DoxyCompactList}\small\item\em This function will compute the points from the polynomials. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classPolynomial_a55b39e470f9a17d304f5cb0c5a511653}{Compute\+Velocity}} (std\+::vector$<$ double $>$ coefficient, std\+::vector$<$ double $>$ time)
+\begin{DoxyCompactList}\small\item\em This function will compute the velocities at time t using vel = C\+\_\+1 + 2C\+\_\+2t + 3C\+\_\+3t$^\wedge$2 + 4C\+\_\+4t$^\wedge$3 + 5C\+\_\+5t$^\wedge$4. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{classPolynomial_a67b2cb8a02b3fde10fae20217cbc9c15}{Compute\+Acceleration}} (std\+::vector$<$ double $>$ coefficient, std\+::vector$<$ double $>$ time)
+\begin{DoxyCompactList}\small\item\em This function will compute the acceleration at time t using acc = 2C\+\_\+2 + 6C\+\_\+3t$^\wedge$2 + 12 C\+\_\+5t$^\wedge$3. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{polynomial_8h_source_l00032}{32}} of file \mbox{\hyperlink{polynomial_8h_source}{polynomial.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPolynomial_a67b2cb8a02b3fde10fae20217cbc9c15}\label{classPolynomial_a67b2cb8a02b3fde10fae20217cbc9c15}} 
+\index{Polynomial@{Polynomial}!ComputeAcceleration@{ComputeAcceleration}}
+\index{ComputeAcceleration@{ComputeAcceleration}!Polynomial@{Polynomial}}
+\doxysubsubsection{\texorpdfstring{ComputeAcceleration()}{ComputeAcceleration()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Polynomial\+::\+Compute\+Acceleration (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$}]{coefficient,  }\item[{std\+::vector$<$ double $>$}]{time }\end{DoxyParamCaption})}
+
+
+
+This function will compute the acceleration at time t using acc = 2C\+\_\+2 + 6C\+\_\+3t$^\wedge$2 + 12 C\+\_\+5t$^\wedge$3. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coefficients} & The computed coefficients \\
+\hline
+{\em time} & the vector of uniform time intervals from start time to end time. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$double$>$ vector of computed acceleration at given time.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em coefficients} & The computed coefficients \\
+\hline
+{\em time} & the vector of uniform time intervals from start time to end time. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$double$>$ derivative results 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{polynomial_8cpp_source_l00239}{239}} of file \mbox{\hyperlink{polynomial_8cpp_source}{polynomial.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00240 \{}
+\DoxyCodeLine{00241     std::vector<double> acceleration;}
+\DoxyCodeLine{00242     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} t\{0\}; t < time.size(); ++t)}
+\DoxyCodeLine{00243     \{}
+\DoxyCodeLine{00244         acceleration.push\_back(2 * coefficient[2] + 6 * coefficient[3] * time[t] + }
+\DoxyCodeLine{00245                                12 * coefficient[4] * std::pow(time[t], 2.0) + }
+\DoxyCodeLine{00246                                20 * coefficient[5] * std::pow(time[t], 3.0));}
+\DoxyCodeLine{00247     \}}
+\DoxyCodeLine{00248     \textcolor{keywordflow}{return} acceleration;}
+\DoxyCodeLine{00249 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPolynomial_a55b39e470f9a17d304f5cb0c5a511653}\label{classPolynomial_a55b39e470f9a17d304f5cb0c5a511653}} 
+\index{Polynomial@{Polynomial}!ComputeVelocity@{ComputeVelocity}}
+\index{ComputeVelocity@{ComputeVelocity}!Polynomial@{Polynomial}}
+\doxysubsubsection{\texorpdfstring{ComputeVelocity()}{ComputeVelocity()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Polynomial\+::\+Compute\+Velocity (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$}]{coefficient,  }\item[{std\+::vector$<$ double $>$}]{time }\end{DoxyParamCaption})}
+
+
+
+This function will compute the velocities at time t using vel = C\+\_\+1 + 2C\+\_\+2t + 3C\+\_\+3t$^\wedge$2 + 4C\+\_\+4t$^\wedge$3 + 5C\+\_\+5t$^\wedge$4. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coefficients} & The computed coefficients \\
+\hline
+{\em time} & the vector of uniform time intervals from start time to end time. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$double$>$ vector of computed velocities at given time. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{polynomial_8cpp_source_l00219}{219}} of file \mbox{\hyperlink{polynomial_8cpp_source}{polynomial.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00220 \{}
+\DoxyCodeLine{00221     std::vector<double> velocity;}
+\DoxyCodeLine{00222     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} t\{0\}; t < time.size(); ++t)}
+\DoxyCodeLine{00223     \{}
+\DoxyCodeLine{00224         velocity.push\_back(coefficient[1] + 2 * coefficient[2] * time[t] + }
+\DoxyCodeLine{00225                                             3 * coefficient[3] * std::pow(time[t], 2.0) + }
+\DoxyCodeLine{00226                                             4 * coefficient[4] * std::pow(time[t], 3.0)+ }
+\DoxyCodeLine{00227                                             5 * coefficient[5] * std::pow(time[t], 4.0));}
+\DoxyCodeLine{00228     \}}
+\DoxyCodeLine{00229     \textcolor{keywordflow}{return} velocity;}
+\DoxyCodeLine{00230 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPolynomial_a86c386ba90db817d897cba6b19f68770}\label{classPolynomial_a86c386ba90db817d897cba6b19f68770}} 
+\index{Polynomial@{Polynomial}!GenerateQuanticPolynomial@{GenerateQuanticPolynomial}}
+\index{GenerateQuanticPolynomial@{GenerateQuanticPolynomial}!Polynomial@{Polynomial}}
+\doxysubsubsection{\texorpdfstring{GenerateQuanticPolynomial()}{GenerateQuanticPolynomial()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Polynomial\+::\+Generate\+Quantic\+Polynomial (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$}]{init\+\_\+values,  }\item[{std\+::vector$<$ double $>$}]{final\+\_\+values,  }\item[{double}]{ti,  }\item[{double}]{tf }\end{DoxyParamCaption})}
+
+
+
+This function will generat the system of linear equation for Quantic polynomial (of order 5) i.\+e. s(t) = a\+\_\+0 + a\+\_\+1 $\ast$ t + a\+\_\+2 $\ast$ t$\ast$$\ast$2 + a\+\_\+3 $\ast$ t$\ast$$\ast$3 + a\+\_\+4 $\ast$ t$\ast$$\ast$4 + a\+\_\+5 $\ast$ t$\ast$$\ast$5. Compute the coefficient using A$^\wedge$-\/1 $\ast$ B = C. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em init\+\_\+values} & Initial values of \mbox{[}s, s\+\_\+dot, s\+\_\+double\+\_\+dot\mbox{]}, where s is position, s\+\_\+dot, is velocity and s\+\_\+double\+\_\+dot is acceleration. \\
+\hline
+{\em final\+\_\+values} & Final values of \mbox{[}s, s\+\_\+dot, s\+\_\+double\+\_\+dot\mbox{]}, where s is position, s\+\_\+dot, is velocity and s\+\_\+double\+\_\+dot is acceleration. \\
+\hline
+{\em ti} & initial time \\
+\hline
+{\em tf} & final time. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector$<$double$>$ vector of length 6 contains computed coefficients of the polynomial. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{polynomial_8cpp_source_l00083}{83}} of file \mbox{\hyperlink{polynomial_8cpp_source}{polynomial.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00084 \{}
+\DoxyCodeLine{00085 \textcolor{preprocessor}{\#ifdef DEBUG2}}
+\DoxyCodeLine{00086     std::cout << \textcolor{stringliteral}{"{}Generating Matrix A: "{}} << std::endl;}
+\DoxyCodeLine{00087 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00088     \textcolor{comment}{// matrix representing equations.}}
+\DoxyCodeLine{00089     MatrixXd A = MatrixXd(6, 6);}
+\DoxyCodeLine{00090     A << 1,   ti,  ti*ti,   ti*ti*ti, ti*ti*ti*ti,  ti*ti*ti*ti*ti,}
+\DoxyCodeLine{00091          0,   1,   2*ti,    3*ti*ti,  4*ti*ti*ti,   5*ti*ti*ti*ti,}
+\DoxyCodeLine{00092          0,   0,   2,       6*ti,     12*ti*ti,     20*ti*ti*ti,}
+\DoxyCodeLine{00093          1,   tf,  tf*tf,   tf*tf*tf, tf*tf*tf*tf,  tf*tf*tf*tf*tf,}
+\DoxyCodeLine{00094          0,   1,   2*tf,    3*tf*tf,  4*tf*tf*tf,   5*tf*tf*tf*tf,}
+\DoxyCodeLine{00095          0,   0,   2,       6*tf,     12*tf*tf,     20*tf*tf*tf;}
+\DoxyCodeLine{00096 }
+\DoxyCodeLine{00097 \textcolor{comment}{// A<< 1, 0, 0, 0, 0, 0,}}
+\DoxyCodeLine{00098 \textcolor{comment}{//     0, 1, 0, 0, 0, 0,}}
+\DoxyCodeLine{00099 \textcolor{comment}{//     0, 0, 1, 0, 0, 0,}}
+\DoxyCodeLine{00100 \textcolor{comment}{//     0, 0, 0, 1, 0, 0,}}
+\DoxyCodeLine{00101 \textcolor{comment}{//     0, 0, 0, 0, 1, 0,}}
+\DoxyCodeLine{00102 \textcolor{comment}{//     0, 0, 0, 0, 0, 1;}}
+\DoxyCodeLine{00103 \textcolor{preprocessor}{\#ifdef DEBUG1}}
+\DoxyCodeLine{00104     std::cout << \textcolor{stringliteral}{"{}The matrix A is: "{}} << std::endl;}
+\DoxyCodeLine{00105     std::cout << A << std::endl;}
+\DoxyCodeLine{00106 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00107 \textcolor{preprocessor}{\#ifdef DEBUG2}}
+\DoxyCodeLine{00108     std::cout << \textcolor{stringliteral}{"{}Generating Matrix B: "{}} << std::endl;}
+\DoxyCodeLine{00109 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00110     MatrixXd B = MatrixXd(6, 1);}
+\DoxyCodeLine{00111     B << init\_values[0], \textcolor{comment}{// initial position}}
+\DoxyCodeLine{00112         init\_values[1],  \textcolor{comment}{// initial velocity}}
+\DoxyCodeLine{00113         init\_values[2],  \textcolor{comment}{// initial acceleration}}
+\DoxyCodeLine{00114         final\_values[0], \textcolor{comment}{// final position}}
+\DoxyCodeLine{00115         final\_values[1], \textcolor{comment}{// final velocity}}
+\DoxyCodeLine{00116         final\_values[2]; \textcolor{comment}{// final acceleration}}
+\DoxyCodeLine{00117 }
+\DoxyCodeLine{00118 \textcolor{preprocessor}{\#ifdef DEBUG1}}
+\DoxyCodeLine{00119     std::cout << \textcolor{stringliteral}{"{}The matrix B is: "{}} << std::endl;}
+\DoxyCodeLine{00120     std::cout << B << std::endl;}
+\DoxyCodeLine{00121 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00122 \textcolor{preprocessor}{\#ifdef DEBUG2}}
+\DoxyCodeLine{00123     std::cout << \textcolor{stringliteral}{"{}Computing Inverse of A: "{}} << std::endl;}
+\DoxyCodeLine{00124 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00125 }
+\DoxyCodeLine{00126     MatrixXd Ai = A.inverse();}
+\DoxyCodeLine{00127 }
+\DoxyCodeLine{00128 \textcolor{preprocessor}{\#ifdef DEBUG1}}
+\DoxyCodeLine{00129     std::cout << \textcolor{stringliteral}{"{}The Inverse of matrix A is: "{}} << std::endl;}
+\DoxyCodeLine{00130     std::cout << Ai << std::endl;}
+\DoxyCodeLine{00131 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00132 \textcolor{preprocessor}{\#ifdef DEBUG2}}
+\DoxyCodeLine{00133     std::cout << \textcolor{stringliteral}{"{}Computing Coefficients using C = A\string^-\/1 * B : "{}} << std::endl;}
+\DoxyCodeLine{00134 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00135 }
+\DoxyCodeLine{00136     MatrixXd C = Ai * B;}
+\DoxyCodeLine{00137 }
+\DoxyCodeLine{00138 \textcolor{preprocessor}{\#ifdef DEBUG1}}
+\DoxyCodeLine{00139     std::cout << \textcolor{stringliteral}{"{}The computed Coefficients are:  "{}} << std::endl;}
+\DoxyCodeLine{00140     std::cout << C << std::endl;}
+\DoxyCodeLine{00141 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00142 }
+\DoxyCodeLine{00143     std::vector<double> result;}
+\DoxyCodeLine{00144     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < C.size(); i++)}
+\DoxyCodeLine{00145     \{}
+\DoxyCodeLine{00146         result.push\_back(C.data()[i]);}
+\DoxyCodeLine{00147     \}}
+\DoxyCodeLine{00148 }
+\DoxyCodeLine{00149     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{00150 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPolynomial_add034a4120e19db2dd7665df0dac0da5}\label{classPolynomial_add034a4120e19db2dd7665df0dac0da5}} 
+\index{Polynomial@{Polynomial}!PolynomialPointsFromCoefficients@{PolynomialPointsFromCoefficients}}
+\index{PolynomialPointsFromCoefficients@{PolynomialPointsFromCoefficients}!Polynomial@{Polynomial}}
+\doxysubsubsection{\texorpdfstring{PolynomialPointsFromCoefficients()}{PolynomialPointsFromCoefficients()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Polynomial\+::\+Polynomial\+Points\+From\+Coefficients (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$}]{coefficients,  }\item[{double}]{from\+\_\+t,  }\item[{double}]{to\+\_\+t,  }\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+This function will compute the points from the polynomials. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coefficients} & coefficients of the polynomials. \\
+\hline
+{\em from\+\_\+t} & starting point \\
+\hline
+{\em to\+\_\+t} & ending point \\
+\hline
+{\em n} & number of points to generate between start and end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$double$>$ vector of points from the polynomial 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{polynomial_8cpp_source_l00160}{160}} of file \mbox{\hyperlink{polynomial_8cpp_source}{polynomial.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00161 \{}
+\DoxyCodeLine{00162 }
+\DoxyCodeLine{00163 \textcolor{preprocessor}{\#ifdef DEBUG2}}
+\DoxyCodeLine{00164     std::cout << \textcolor{stringliteral}{"{}Computing [ "{}} << n << \textcolor{stringliteral}{"{} ] Uniform points between [ "{}} << from\_t << \textcolor{stringliteral}{"{} , "{}} << to\_t << \textcolor{stringliteral}{"{} ]"{}} << std::endl;}
+\DoxyCodeLine{00165 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00166     std::vector<double> ts = \mbox{\hyperlink{classPolynomial_a48820ddd31ba1b3b3acd8c6884f0f86c}{TimeInterval}}(from\_t, to\_t, n);}
+\DoxyCodeLine{00167     std::vector<double> polynomial;}
+\DoxyCodeLine{00168     polynomial.resize(n);}
+\DoxyCodeLine{00169     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&p : polynomial)}
+\DoxyCodeLine{00170     \{}
+\DoxyCodeLine{00171         p = 0;}
+\DoxyCodeLine{00172     \}}
+\DoxyCodeLine{00173 \textcolor{preprocessor}{\#ifdef DEBUG1}}
+\DoxyCodeLine{00174     std::cout << \textcolor{stringliteral}{"{} Point Intervals:  "{}} << polynomial.size() << std::endl;}
+\DoxyCodeLine{00175     std::cout << \textcolor{stringliteral}{"{} [ "{}};}
+\DoxyCodeLine{00176     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&t : ts)}
+\DoxyCodeLine{00177     \{}
+\DoxyCodeLine{00178         std::cout << t << \textcolor{stringliteral}{"{} , "{}};}
+\DoxyCodeLine{00179     \}}
+\DoxyCodeLine{00180     std::cout << \textcolor{stringliteral}{"{} ] "{}} << std::endl;}
+\DoxyCodeLine{00181 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00182 \textcolor{preprocessor}{\#ifdef DEBUG2}}
+\DoxyCodeLine{00183     std::cout << \textcolor{stringliteral}{"{}Computing polynomials: "{}} << std::endl;}
+\DoxyCodeLine{00184 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00185     \textcolor{keywordtype}{int} power\{0\};}
+\DoxyCodeLine{00186     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} t\{0\}; t < ts.size(); ++t)}
+\DoxyCodeLine{00187     \{}
+\DoxyCodeLine{00188         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&coefficient : coefficients)}
+\DoxyCodeLine{00189         \{}
+\DoxyCodeLine{00190             polynomial[t] = polynomial[t] + (coefficient * std::pow(ts[t], power));}
+\DoxyCodeLine{00191             ++power;}
+\DoxyCodeLine{00192         \}}
+\DoxyCodeLine{00193         power = 0;}
+\DoxyCodeLine{00194     \}}
+\DoxyCodeLine{00195 \textcolor{preprocessor}{\#ifdef DEBUG2}}
+\DoxyCodeLine{00196     std::cout << \textcolor{stringliteral}{"{}Computed polynomials."{}} << std::endl;}
+\DoxyCodeLine{00197 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00198 \textcolor{preprocessor}{\#ifdef DEBUG1}}
+\DoxyCodeLine{00199     std::cout << \textcolor{stringliteral}{"{} Polynomial vector size is :  "{}} << polynomial.size() << std::endl;}
+\DoxyCodeLine{00200     std::cout << \textcolor{stringliteral}{"{} [ "{}};}
+\DoxyCodeLine{00201     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \&p : polynomial)}
+\DoxyCodeLine{00202     \{}
+\DoxyCodeLine{00203         std::cout << p << \textcolor{stringliteral}{"{} , "{}};}
+\DoxyCodeLine{00204     \}}
+\DoxyCodeLine{00205     std::cout << \textcolor{stringliteral}{"{} ] "{}} << std::endl}
+\DoxyCodeLine{00206               << std::endl;}
+\DoxyCodeLine{00207 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00208 }
+\DoxyCodeLine{00209     \textcolor{keywordflow}{return} polynomial;}
+\DoxyCodeLine{00210 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classPolynomial_a48820ddd31ba1b3b3acd8c6884f0f86c}\label{classPolynomial_a48820ddd31ba1b3b3acd8c6884f0f86c}} 
+\index{Polynomial@{Polynomial}!TimeInterval@{TimeInterval}}
+\index{TimeInterval@{TimeInterval}!Polynomial@{Polynomial}}
+\doxysubsubsection{\texorpdfstring{TimeInterval()}{TimeInterval()}}
+{\footnotesize\ttfamily std\+::vector$<$ double $>$ Polynomial\+::\+Time\+Interval (\begin{DoxyParamCaption}\item[{double}]{start\+\_\+in,  }\item[{double}]{end\+\_\+in,  }\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+It compute the n uniform numbers between start and end number. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em start\+\_\+in} & The starting number \\
+\hline
+{\em end\+\_\+in} & The ending number. \\
+\hline
+{\em n} & uniform intervals between start and end. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$double$>$ 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{polynomial_8cpp_source_l00043}{43}} of file \mbox{\hyperlink{polynomial_8cpp_source}{polynomial.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00044 \{}
+\DoxyCodeLine{00045 }
+\DoxyCodeLine{00046     std::vector<double> linspaced;}
+\DoxyCodeLine{00047 }
+\DoxyCodeLine{00048     \textcolor{keywordtype}{double} start = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(start\_in);}
+\DoxyCodeLine{00049     \textcolor{keywordtype}{double} end = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(end\_in);}
+\DoxyCodeLine{00050     \textcolor{keywordtype}{double} num = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(n);}
+\DoxyCodeLine{00051 }
+\DoxyCodeLine{00052     \textcolor{keywordflow}{if} (num == 0)}
+\DoxyCodeLine{00053     \{}
+\DoxyCodeLine{00054         \textcolor{keywordflow}{return} linspaced;}
+\DoxyCodeLine{00055     \}}
+\DoxyCodeLine{00056     \textcolor{keywordflow}{if} (num == 1)}
+\DoxyCodeLine{00057     \{}
+\DoxyCodeLine{00058         linspaced.push\_back(start);}
+\DoxyCodeLine{00059         \textcolor{keywordflow}{return} linspaced;}
+\DoxyCodeLine{00060     \}}
+\DoxyCodeLine{00061 }
+\DoxyCodeLine{00062     \textcolor{keywordtype}{double} delta = (end -\/ start) / (num -\/ 1);}
+\DoxyCodeLine{00063 }
+\DoxyCodeLine{00064     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < num -\/ 1; ++i)}
+\DoxyCodeLine{00065     \{}
+\DoxyCodeLine{00066         linspaced.push\_back(start + delta * i);}
+\DoxyCodeLine{00067     \}}
+\DoxyCodeLine{00068     linspaced.push\_back(end);}
+\DoxyCodeLine{00069     \textcolor{keywordflow}{return} linspaced;}
+\DoxyCodeLine{00070 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/polynomial.\+h\item 
+src/polynomial.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,230 @@
+\hypertarget{main_8cpp}{}\doxysection{src/main.cpp File Reference}
+\label{main_8cpp}\index{src/main.cpp@{src/main.cpp}}
+
+
+This simple trajectory generation library use quantic polynomials for trajectory generation under joint position, velocity and acceleration constraints.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}polynomial.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}visulization/matplotlib-\/cpp/matplotlibcpp.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structJointTrajectoryConstraints}{Joint\+Trajectory\+Constraints}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+section Intro Introduction This is some text in my introduction section Body Body Paragraph This is some text in my \mbox{\hyperlink{main_8cpp_a0256cd5daf6417e3f4a05715e6ae08db}{body}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This simple trajectory generation library use quantic polynomials for trajectory generation under joint position, velocity and acceleration constraints. 
+
+\begin{DoxyAuthor}{Author}
+Muhayy Ud Din (\href{mailto:muhayyuddin_1@hotmail.com}{\texttt{ muhayyuddin\+\_\+1@hotmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/02-\/15
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+Definition in file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{main_8cpp_a8a1c50884986470fb31604484158b637}\label{main_8cpp_a8a1c50884986470fb31604484158b637}} 
+\index{main.cpp@{main.cpp}!DEBUG1@{DEBUG1}}
+\index{DEBUG1@{DEBUG1}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{DEBUG1}{DEBUG1}}
+{\footnotesize\ttfamily \#define DEBUG1}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00045}{45}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\mbox{\Hypertarget{main_8cpp_a76f3f41704b017cd5003628dd0bc366b}\label{main_8cpp_a76f3f41704b017cd5003628dd0bc366b}} 
+\index{main.cpp@{main.cpp}!DEBUG2@{DEBUG2}}
+\index{DEBUG2@{DEBUG2}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{DEBUG2}{DEBUG2}}
+{\footnotesize\ttfamily \#define DEBUG2}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00046}{46}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00058}{58}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00059 \{}
+\DoxyCodeLine{00060     \textcolor{keyword}{using} Position = std::vector<std::vector<double>>;}
+\DoxyCodeLine{00061     \textcolor{keyword}{using} Velocity = std::vector<std::vector<double>>;}
+\DoxyCodeLine{00062     \textcolor{keyword}{using} Acceleration = std::vector<std::vector<double>>;}
+\DoxyCodeLine{00063     std::vector<std::string> colors = \{\textcolor{stringliteral}{"{}r"{}}, \textcolor{stringliteral}{"{}g"{}}, \textcolor{stringliteral}{"{}b"{}}, \textcolor{stringliteral}{"{}c"{}}, \textcolor{stringliteral}{"{}m"{}}, \textcolor{stringliteral}{"{}y"{}}, \textcolor{stringliteral}{"{}k"{}}, \textcolor{stringliteral}{"{}w"{}}\};}
+\DoxyCodeLine{00064     Position joint\_position;}
+\DoxyCodeLine{00065     Velocity joint\_velocity;}
+\DoxyCodeLine{00066     Acceleration joint\_acceleration;}
+\DoxyCodeLine{00067 }
+\DoxyCodeLine{00068     std::vector<JointTrajectoryConstraints> joint\_trajectory\_constraints;}
+\DoxyCodeLine{00069     \mbox{\hyperlink{classPolynomial}{Polynomial}} polynomialGenerator;}
+\DoxyCodeLine{00070     \textcolor{comment}{// trajectory constraints for two link robot first trajectory point}}
+\DoxyCodeLine{00071     \{}
+\DoxyCodeLine{00072         \mbox{\hyperlink{structJointTrajectoryConstraints}{JointTrajectoryConstraints}} joint1;}
+\DoxyCodeLine{00073         joint1.initial\_joint\_constraints = \{0.5, 0, 0\};}
+\DoxyCodeLine{00074         joint1.final\_joint\_constraints = \{1.57, 0, 2\};}
+\DoxyCodeLine{00075         joint1.ti = 0;}
+\DoxyCodeLine{00076         joint1.tf = 2;}
+\DoxyCodeLine{00077         joint\_trajectory\_constraints.push\_back(joint1);}
+\DoxyCodeLine{00078 }
+\DoxyCodeLine{00079         \mbox{\hyperlink{structJointTrajectoryConstraints}{JointTrajectoryConstraints}} joint2;}
+\DoxyCodeLine{00080         joint2.initial\_joint\_constraints = \{-\/0.2, 0, 0\};}
+\DoxyCodeLine{00081         joint2.final\_joint\_constraints = \{0.5, 1, 1\};}
+\DoxyCodeLine{00082         joint2.ti = 0;}
+\DoxyCodeLine{00083         joint2.tf = 2;}
+\DoxyCodeLine{00084         joint\_trajectory\_constraints.push\_back(joint2);}
+\DoxyCodeLine{00085 }
+\DoxyCodeLine{00086         \textcolor{comment}{// JointTrajectoryConstraints joint3;}}
+\DoxyCodeLine{00087         \textcolor{comment}{// joint3.initial\_joint\_constraints = \{-\/0.57, 0, 0\};}}
+\DoxyCodeLine{00088         \textcolor{comment}{// joint3.final\_joint\_constraints = \{0.5, 0, 0\};}}
+\DoxyCodeLine{00089         \textcolor{comment}{// joint3.ti = 0;}}
+\DoxyCodeLine{00090         \textcolor{comment}{// joint3.tf = 1;}}
+\DoxyCodeLine{00091         \textcolor{comment}{// joint\_trajectory\_constraints.push\_back(joint3);}}
+\DoxyCodeLine{00092 }
+\DoxyCodeLine{00093         \textcolor{comment}{// JointTrajectoryConstraints joint4;}}
+\DoxyCodeLine{00094         \textcolor{comment}{// joint4.initial\_joint\_constraints = \{-\/0.2, 0, 0\};}}
+\DoxyCodeLine{00095         \textcolor{comment}{// joint4.final\_joint\_constraints = \{1.1, 0, 0\};}}
+\DoxyCodeLine{00096         \textcolor{comment}{// joint4.ti = 0;}}
+\DoxyCodeLine{00097         \textcolor{comment}{// joint4.tf = 1;}}
+\DoxyCodeLine{00098         \textcolor{comment}{// joint\_trajectory\_constraints.push\_back(joint4);}}
+\DoxyCodeLine{00099     \}}
+\DoxyCodeLine{00100 }
+\DoxyCodeLine{00101     std::vector<double> x = polynomialGenerator.\mbox{\hyperlink{classPolynomial_a48820ddd31ba1b3b3acd8c6884f0f86c}{TimeInterval}}(0, 2, 50);}
+\DoxyCodeLine{00102     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i\{0\}; i < joint\_trajectory\_constraints.size(); ++i)}
+\DoxyCodeLine{00103     \{}
+\DoxyCodeLine{00104         std::vector<double> coefficients = polynomialGenerator.\mbox{\hyperlink{classPolynomial_a86c386ba90db817d897cba6b19f68770}{GenerateQuanticPolynomial}}(joint\_trajectory\_constraints[i].initial\_joint\_constraints, joint\_trajectory\_constraints[i].final\_joint\_constraints, joint\_trajectory\_constraints[i].ti, joint\_trajectory\_constraints[i].tf);}
+\DoxyCodeLine{00105         std::vector<double> pos = polynomialGenerator.\mbox{\hyperlink{classPolynomial_add034a4120e19db2dd7665df0dac0da5}{PolynomialPointsFromCoefficients}}(coefficients, joint\_trajectory\_constraints[i].ti, joint\_trajectory\_constraints[i].tf, 50);}
+\DoxyCodeLine{00106         joint\_position.push\_back(pos);}
+\DoxyCodeLine{00107         std::vector<double> vel = polynomialGenerator.\mbox{\hyperlink{classPolynomial_a55b39e470f9a17d304f5cb0c5a511653}{ComputeVelocity}}(coefficients, x);}
+\DoxyCodeLine{00108         joint\_velocity.push\_back(vel);}
+\DoxyCodeLine{00109         std::vector<double> ace = polynomialGenerator.\mbox{\hyperlink{classPolynomial_a67b2cb8a02b3fde10fae20217cbc9c15}{ComputeAcceleration}}(coefficients, x);}
+\DoxyCodeLine{00110         joint\_acceleration.push\_back(ace);}
+\DoxyCodeLine{00111     \}}
+\DoxyCodeLine{00112     plt::figure();}
+\DoxyCodeLine{00113     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} joint\{0\}; joint < joint\_position.size(); ++joint)}
+\DoxyCodeLine{00114     \{}
+\DoxyCodeLine{00115 }
+\DoxyCodeLine{00116         plt::title(\textcolor{stringliteral}{"{}Trajectory"{}});}
+\DoxyCodeLine{00117         std::map<std::string, std::string> legends;}
+\DoxyCodeLine{00118         legends.insert(std::pair<std::string, std::string>(\textcolor{stringliteral}{"{}label"{}}, \textcolor{stringliteral}{"{}Joint"{}} + std::to\_string(joint)));}
+\DoxyCodeLine{00119         plt::plot(x, joint\_position[joint], legends);}
+\DoxyCodeLine{00120         plt::legend();}
+\DoxyCodeLine{00121     \}}
+\DoxyCodeLine{00122 }
+\DoxyCodeLine{00123     plt::figure();}
+\DoxyCodeLine{00124 }
+\DoxyCodeLine{00125     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} joint\{0\}; joint < joint\_position.size(); ++joint)}
+\DoxyCodeLine{00126     \{}
+\DoxyCodeLine{00127 }
+\DoxyCodeLine{00128         plt::title(\textcolor{stringliteral}{"{}Velocity"{}});}
+\DoxyCodeLine{00129         std::map<std::string, std::string> legends;}
+\DoxyCodeLine{00130         legends.insert(std::pair<std::string, std::string>(\textcolor{stringliteral}{"{}label"{}}, \textcolor{stringliteral}{"{}Joint"{}} + std::to\_string(joint)));}
+\DoxyCodeLine{00131         plt::plot(x, joint\_velocity[joint], legends);}
+\DoxyCodeLine{00132         plt::legend();}
+\DoxyCodeLine{00133     \}}
+\DoxyCodeLine{00134     plt::figure();}
+\DoxyCodeLine{00135 }
+\DoxyCodeLine{00136     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} joint\{0\}; joint < joint\_position.size(); ++joint)}
+\DoxyCodeLine{00137     \{}
+\DoxyCodeLine{00138 }
+\DoxyCodeLine{00139         plt::title(\textcolor{stringliteral}{"{}Acceleration"{}});}
+\DoxyCodeLine{00140         std::map<std::string, std::string> legends;}
+\DoxyCodeLine{00141         legends.insert(std::pair<std::string, std::string>(\textcolor{stringliteral}{"{}label"{}}, \textcolor{stringliteral}{"{}Joint"{}} + std::to\_string(joint)));}
+\DoxyCodeLine{00142         plt::plot(x, joint\_acceleration[joint], legends);}
+\DoxyCodeLine{00143         plt::legend();}
+\DoxyCodeLine{00144     \}}
+\DoxyCodeLine{00145     plt::show();}
+\DoxyCodeLine{00146     \textcolor{comment}{// plt::savefig("{}standard.pdf"{}); // save the figure}}
+\DoxyCodeLine{00147     \textcolor{comment}{/*std::cout<<"{}Poly points are: [ "{};}}
+\DoxyCodeLine{00148 \textcolor{comment}{        for(const auto\& polypoint:polypoints)}}
+\DoxyCodeLine{00149 \textcolor{comment}{        \{}}
+\DoxyCodeLine{00150 \textcolor{comment}{            std::cout<<polypoint<<"{} , "{};}}
+\DoxyCodeLine{00151 \textcolor{comment}{        \}}}
+\DoxyCodeLine{00152 \textcolor{comment}{        std::cout<<"{} ]"{}<<std::endl;}}
+\DoxyCodeLine{00153 \textcolor{comment}{}}
+\DoxyCodeLine{00154 \textcolor{comment}{}}
+\DoxyCodeLine{00155 \textcolor{comment}{        std::cout<<"{}Poly derivatives are: [ "{};}}
+\DoxyCodeLine{00156 \textcolor{comment}{        for(const auto\& polypoint:polyderivatives)}}
+\DoxyCodeLine{00157 \textcolor{comment}{        \{}}
+\DoxyCodeLine{00158 \textcolor{comment}{            std::cout<<polypoint<<"{} , "{};}}
+\DoxyCodeLine{00159 \textcolor{comment}{        \}}}
+\DoxyCodeLine{00160 \textcolor{comment}{        std::cout<<"{} ]"{}<<std::endl;}}
+\DoxyCodeLine{00161 \textcolor{comment}{}}
+\DoxyCodeLine{00162 \textcolor{comment}{        std::cout<<"{}Poly second derivatives are: [ "{};}}
+\DoxyCodeLine{00163 \textcolor{comment}{        for(const auto\& polypoint:polyderivativesAccel)}}
+\DoxyCodeLine{00164 \textcolor{comment}{        \{}}
+\DoxyCodeLine{00165 \textcolor{comment}{            std::cout<<polypoint<<"{} , "{};}}
+\DoxyCodeLine{00166 \textcolor{comment}{        \}}}
+\DoxyCodeLine{00167 \textcolor{comment}{        std::cout<<"{} ]"{}<<std::endl;*/}}
+\DoxyCodeLine{00168     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} joint\{0\}; joint < joint\_position.size(); ++joint)}
+\DoxyCodeLine{00169     \{}
+\DoxyCodeLine{00170 }
+\DoxyCodeLine{00171         plt::figure();}
+\DoxyCodeLine{00172         plt::title(\textcolor{stringliteral}{"{}position, velocity and acceleration"{}});}
+\DoxyCodeLine{00173         plt::plot(x, joint\_position[joint], \{\{\textcolor{stringliteral}{"{}label"{}}, \textcolor{stringliteral}{"{}position "{}}\}\});}
+\DoxyCodeLine{00174         plt::legend();}
+\DoxyCodeLine{00175 }
+\DoxyCodeLine{00176         plt::plot(x, joint\_velocity[joint], \{\{\textcolor{stringliteral}{"{}label"{}}, \textcolor{stringliteral}{"{}velocity "{}}\}\});}
+\DoxyCodeLine{00177         plt::legend();}
+\DoxyCodeLine{00178 }
+\DoxyCodeLine{00179         plt::plot(x, joint\_acceleration[joint], \{\{\textcolor{stringliteral}{"{}label"{}}, \textcolor{stringliteral}{"{}acceleration "{}}\}\});}
+\DoxyCodeLine{00180         plt::legend();}
+\DoxyCodeLine{00181 }
+\DoxyCodeLine{00182         \textcolor{keywordflow}{if} (joint == joint\_position.size() -\/ 1)}
+\DoxyCodeLine{00183             plt::show();}
+\DoxyCodeLine{00184     \}}
+\DoxyCodeLine{00185     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{00186 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{main_8cpp_a0256cd5daf6417e3f4a05715e6ae08db}\label{main_8cpp_a0256cd5daf6417e3f4a05715e6ae08db}} 
+\index{main.cpp@{main.cpp}!body@{body}}
+\index{body@{body}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{body}{body}}
+{\footnotesize\ttfamily section Intro Introduction This is some text in my introduction section Body Body Paragraph This is some text in my body}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+

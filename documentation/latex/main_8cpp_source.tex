@@ -1,0 +1,182 @@
+\hypertarget{main_8cpp_source}{}\doxysection{main.\+cpp}
+\label{main_8cpp_source}\index{src/main.cpp@{src/main.cpp}}
+\mbox{\hyperlink{main_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00001}00001 \textcolor{comment}{/*************************************************************************\(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00002}00002 \textcolor{comment}{   Copyright 2022: Muhayy Ud Din.}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00003}00003 \textcolor{comment}{    All Rights Reserved.}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00004}00004 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00005}00005 \textcolor{comment}{    This program is free software; you can redistribute it and/or modify}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00006}00006 \textcolor{comment}{    it under the terms of the GNU General Public License as published by}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00007}00007 \textcolor{comment}{    the Free Software Foundation; either version 2 of the License, or}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00008}00008 \textcolor{comment}{    (at your option) any later version.}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00009}00009 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00010}00010 \textcolor{comment}{    This program is distributed in the hope that it will be useful,}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00011}00011 \textcolor{comment}{    but WITHOUT ANY WARRANTY; without even the implied warranty of}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00012}00012 \textcolor{comment}{    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00013}00013 \textcolor{comment}{    GNU General Public License for more details.}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00014}00014 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00015}00015 \textcolor{comment}{    You should have received a copy of the GNU General Public License}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00016}00016 \textcolor{comment}{    along with this program; if not, write to the}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00017}00017 \textcolor{comment}{    Free Software Foundation, Inc.,}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00018}00018 \textcolor{comment}{    59 Temple Place -\/ Suite 330, Boston, MA  02111-\/1307, USA.}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00019}00019 \textcolor{comment}{ \(\backslash\)*************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00020}00020 \textcolor{comment}{/* Author: Muhayy Ud Din */}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00031}00031 @section Intro Introduction}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00033}00033 This is some text in my introduction.}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00035}00035 @section Body Body Paragraph}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00037}00037 This is some text in my body, where I refer to the @ref Intro..}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00038}00038 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00039}00039 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00040}00040 \textcolor{preprocessor}{\#include <cmath>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00041}00041 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00042}00042 \textcolor{preprocessor}{\#include "{}polynomial.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00043}00043 \textcolor{preprocessor}{\#include "{}visulization/matplotlib-\/cpp/matplotlibcpp.h"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00045}00045 \textcolor{preprocessor}{\#define DEBUG1}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00046}00046 \textcolor{preprocessor}{\#define DEBUG2}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00047}00047 \textcolor{keyword}{namespace }plt = matplotlibcpp;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00049}\mbox{\hyperlink{structJointTrajectoryConstraints}{00049}} \textcolor{keyword}{struct }\mbox{\hyperlink{structJointTrajectoryConstraints}{JointTrajectoryConstraints}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00050}00050 \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00052}00052     std::vector<double> initial\_joint\_constraints; \textcolor{comment}{// initial position, velocity and acceleration}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00053}00053     std::vector<double> final\_joint\_constraints;   \textcolor{comment}{// final position, velocity and acceleration}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00054}00054     \textcolor{keywordtype}{double} ti;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00055}00055     \textcolor{keywordtype}{double} tf;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00056}00056 \};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00058}00058 \textcolor{keywordtype}{int} main()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00059}00059 \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00060}00060     \textcolor{keyword}{using} Position = std::vector<std::vector<double>>;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00061}00061     \textcolor{keyword}{using} Velocity = std::vector<std::vector<double>>;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00062}00062     \textcolor{keyword}{using} Acceleration = std::vector<std::vector<double>>;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00063}00063     std::vector<std::string> colors = \{\textcolor{stringliteral}{"{}r"{}}, \textcolor{stringliteral}{"{}g"{}}, \textcolor{stringliteral}{"{}b"{}}, \textcolor{stringliteral}{"{}c"{}}, \textcolor{stringliteral}{"{}m"{}}, \textcolor{stringliteral}{"{}y"{}}, \textcolor{stringliteral}{"{}k"{}}, \textcolor{stringliteral}{"{}w"{}}\};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00064}00064     Position joint\_position;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00065}00065     Velocity joint\_velocity;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00066}00066     Acceleration joint\_acceleration;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00068}00068     std::vector<JointTrajectoryConstraints> joint\_trajectory\_constraints;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00069}00069     \mbox{\hyperlink{classPolynomial}{Polynomial}} polynomialGenerator;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00070}00070     \textcolor{comment}{// trajectory constraints for two link robot first trajectory point}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00071}00071     \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00072}00072         \mbox{\hyperlink{structJointTrajectoryConstraints}{JointTrajectoryConstraints}} joint1;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00073}00073         joint1.initial\_joint\_constraints = \{0.5, 0, 0\};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00074}00074         joint1.final\_joint\_constraints = \{1.57, 0, 2\};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00075}00075         joint1.ti = 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00076}00076         joint1.tf = 2;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00077}00077         joint\_trajectory\_constraints.push\_back(joint1);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00079}00079         \mbox{\hyperlink{structJointTrajectoryConstraints}{JointTrajectoryConstraints}} joint2;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00080}00080         joint2.initial\_joint\_constraints = \{-\/0.2, 0, 0\};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00081}00081         joint2.final\_joint\_constraints = \{0.5, 1, 1\};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00082}00082         joint2.ti = 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00083}00083         joint2.tf = 2;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00084}00084         joint\_trajectory\_constraints.push\_back(joint2);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00086}00086         \textcolor{comment}{// JointTrajectoryConstraints joint3;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00087}00087         \textcolor{comment}{// joint3.initial\_joint\_constraints = \{-\/0.57, 0, 0\};}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00088}00088         \textcolor{comment}{// joint3.final\_joint\_constraints = \{0.5, 0, 0\};}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00089}00089         \textcolor{comment}{// joint3.ti = 0;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00090}00090         \textcolor{comment}{// joint3.tf = 1;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00091}00091         \textcolor{comment}{// joint\_trajectory\_constraints.push\_back(joint3);}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00092}00092 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00093}00093         \textcolor{comment}{// JointTrajectoryConstraints joint4;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00094}00094         \textcolor{comment}{// joint4.initial\_joint\_constraints = \{-\/0.2, 0, 0\};}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00095}00095         \textcolor{comment}{// joint4.final\_joint\_constraints = \{1.1, 0, 0\};}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00096}00096         \textcolor{comment}{// joint4.ti = 0;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00097}00097         \textcolor{comment}{// joint4.tf = 1;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00098}00098         \textcolor{comment}{// joint\_trajectory\_constraints.push\_back(joint4);}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00099}00099     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00100}00100 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00101}00101     std::vector<double> x = polynomialGenerator.\mbox{\hyperlink{classPolynomial_a48820ddd31ba1b3b3acd8c6884f0f86c}{TimeInterval}}(0, 2, 50);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00102}00102     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i\{0\}; i < joint\_trajectory\_constraints.size(); ++i)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00103}00103     \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00104}00104         std::vector<double> coefficients = polynomialGenerator.\mbox{\hyperlink{classPolynomial_a86c386ba90db817d897cba6b19f68770}{GenerateQuanticPolynomial}}(joint\_trajectory\_constraints[i].initial\_joint\_constraints, joint\_trajectory\_constraints[i].final\_joint\_constraints, joint\_trajectory\_constraints[i].ti, joint\_trajectory\_constraints[i].tf);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00105}00105         std::vector<double> pos = polynomialGenerator.\mbox{\hyperlink{classPolynomial_add034a4120e19db2dd7665df0dac0da5}{PolynomialPointsFromCoefficients}}(coefficients, joint\_trajectory\_constraints[i].ti, joint\_trajectory\_constraints[i].tf, 50);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00106}00106         joint\_position.push\_back(pos);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00107}00107         std::vector<double> vel = polynomialGenerator.\mbox{\hyperlink{classPolynomial_a55b39e470f9a17d304f5cb0c5a511653}{ComputeVelocity}}(coefficients, x);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00108}00108         joint\_velocity.push\_back(vel);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00109}00109         std::vector<double> ace = polynomialGenerator.\mbox{\hyperlink{classPolynomial_a67b2cb8a02b3fde10fae20217cbc9c15}{ComputeAcceleration}}(coefficients, x);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00110}00110         joint\_acceleration.push\_back(ace);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00111}00111     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00112}00112     plt::figure();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00113}00113     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} joint\{0\}; joint < joint\_position.size(); ++joint)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00114}00114     \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00115}00115 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00116}00116         plt::title(\textcolor{stringliteral}{"{}Trajectory"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00117}00117         std::map<std::string, std::string> legends;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00118}00118         legends.insert(std::pair<std::string, std::string>(\textcolor{stringliteral}{"{}label"{}}, \textcolor{stringliteral}{"{}Joint"{}} + std::to\_string(joint)));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00119}00119         plt::plot(x, joint\_position[joint], legends);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00120}00120         plt::legend();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00121}00121     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00122}00122 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00123}00123     plt::figure();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00124}00124 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00125}00125     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} joint\{0\}; joint < joint\_position.size(); ++joint)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00126}00126     \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00127}00127 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00128}00128         plt::title(\textcolor{stringliteral}{"{}Velocity"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00129}00129         std::map<std::string, std::string> legends;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00130}00130         legends.insert(std::pair<std::string, std::string>(\textcolor{stringliteral}{"{}label"{}}, \textcolor{stringliteral}{"{}Joint"{}} + std::to\_string(joint)));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00131}00131         plt::plot(x, joint\_velocity[joint], legends);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00132}00132         plt::legend();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00133}00133     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00134}00134     plt::figure();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00135}00135 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00136}00136     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} joint\{0\}; joint < joint\_position.size(); ++joint)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00137}00137     \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00138}00138 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00139}00139         plt::title(\textcolor{stringliteral}{"{}Acceleration"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00140}00140         std::map<std::string, std::string> legends;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00141}00141         legends.insert(std::pair<std::string, std::string>(\textcolor{stringliteral}{"{}label"{}}, \textcolor{stringliteral}{"{}Joint"{}} + std::to\_string(joint)));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00142}00142         plt::plot(x, joint\_acceleration[joint], legends);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00143}00143         plt::legend();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00144}00144     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00145}00145     plt::show();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00146}00146     \textcolor{comment}{// plt::savefig("{}standard.pdf"{}); // save the figure}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00147}00147     \textcolor{comment}{/*std::cout<<"{}Poly points are: [ "{};}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00148}00148 \textcolor{comment}{        for(const auto\& polypoint:polypoints)}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00149}00149 \textcolor{comment}{        \{}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00150}00150 \textcolor{comment}{            std::cout<<polypoint<<"{} , "{};}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00151}00151 \textcolor{comment}{        \}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00152}00152 \textcolor{comment}{        std::cout<<"{} ]"{}<<std::endl;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00153}00153 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00154}00154 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00155}00155 \textcolor{comment}{        std::cout<<"{}Poly derivatives are: [ "{};}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00156}00156 \textcolor{comment}{        for(const auto\& polypoint:polyderivatives)}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00157}00157 \textcolor{comment}{        \{}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00158}00158 \textcolor{comment}{            std::cout<<polypoint<<"{} , "{};}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00159}00159 \textcolor{comment}{        \}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00160}00160 \textcolor{comment}{        std::cout<<"{} ]"{}<<std::endl;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00161}00161 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00162}00162 \textcolor{comment}{        std::cout<<"{}Poly second derivatives are: [ "{};}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00163}00163 \textcolor{comment}{        for(const auto\& polypoint:polyderivativesAccel)}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00164}00164 \textcolor{comment}{        \{}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00165}00165 \textcolor{comment}{            std::cout<<polypoint<<"{} , "{};}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00166}00166 \textcolor{comment}{        \}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00167}00167 \textcolor{comment}{        std::cout<<"{} ]"{}<<std::endl;*/}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00168}00168     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} joint\{0\}; joint < joint\_position.size(); ++joint)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00169}00169     \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00170}00170 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00171}00171         plt::figure();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00172}00172         plt::title(\textcolor{stringliteral}{"{}position, velocity and acceleration"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00173}00173         plt::plot(x, joint\_position[joint], \{\{\textcolor{stringliteral}{"{}label"{}}, \textcolor{stringliteral}{"{}position "{}}\}\});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00174}00174         plt::legend();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00175}00175 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00176}00176         plt::plot(x, joint\_velocity[joint], \{\{\textcolor{stringliteral}{"{}label"{}}, \textcolor{stringliteral}{"{}velocity "{}}\}\});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00177}00177         plt::legend();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00178}00178 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00179}00179         plt::plot(x, joint\_acceleration[joint], \{\{\textcolor{stringliteral}{"{}label"{}}, \textcolor{stringliteral}{"{}acceleration "{}}\}\});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00180}00180         plt::legend();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00181}00181 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00182}00182         \textcolor{keywordflow}{if} (joint == joint\_position.size() -\/ 1)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00183}00183             plt::show();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00184}00184     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00185}00185     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00186}00186 \}}
+
+\end{DoxyCode}
